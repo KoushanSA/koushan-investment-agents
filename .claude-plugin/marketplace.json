@@ -1,1 +1,32 @@
-{"name":"koushan-investment-agents","owner":{"name":"Koushan"},"metadata":{"description":"Koushan investment & real estate agents (Claude AI 2.0)."},"plugins":[{"name":"furas-opportunity-scout","source":"./plugins/furas-opportunity-scout","description":"Scans the Furas (فرص) municipal investment portal for long-term opportunities in Riyadh, Jeddah, Mecca and Medina and publishes an Arabic dashboard; deep-dives an opportunity's كراسة and plots opportunities on Google Maps.","version":"1.15.0","category":"investment"}]}
+{
+  "name": "koushan-investment-agents",
+  "owner": {
+    "name": "Koushan"
+  },
+  "metadata": {
+    "description": "Koushan investment & real estate agents (Claude AI 2.0)."
+  },
+  "plugins": [
+    {
+      "name": "furas-opportunity-scout",
+      "source": "./plugins/furas-opportunity-scout",
+      "description": "Scans the Furas (فرص) municipal investment portal for long-term opportunities in Riyadh, Jeddah, Mecca and Medina and publishes an Arabic dashboard; deep-dives an opportunity's كراسة and plots opportunities on Google Maps.",
+      "version": "1.15.0",
+      "category": "investment"
+    },
+    {
+      "name": "jeddah-market-analyst",
+      "source": "./plugins/jeddah-market-analyst",
+      "description": "Twice-weekly Jeddah real estate market analyst: MOJ Real Estate Exchange deals + every active aqar.fm listing → an Arabic dashboard with district prices, supply ratio and investment signals. Also analyses a single listing.",
+      "version": "0.1.2",
+      "category": "real-estate"
+    },
+    {
+      "name": "re-regulatory-monitor",
+      "source": "./plugins/re-regulatory-monitor",
+      "description": "Weekly Saudi real estate regulatory monitor (Umm Al-Qura, REGA, MOMAH): an Arabic decisions library (active / superseded / uncertain) plus one email alert per new decision.",
+      "version": "0.2.0",
+      "category": "real-estate"
+    }
+  ]
+}
