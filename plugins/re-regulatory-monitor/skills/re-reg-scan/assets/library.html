@@ -1,0 +1,205 @@
+<title>مكتبة القرارات العقارية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;600&display=swap">
+<style>
+:root{
+  --paper:#F6F7F5; --surface:#FFFFFF; --ink:#1C2528; --muted:#5B676B; --line:#DDE2E0;
+  --accent:#0E6655; --accent-soft:#E3F0EC;
+  --ok:#1E7A4C; --ok-soft:#E4F3EA; --old:#7A5A5A; --old-soft:#F2EAEA; --warn:#8A5A00; --warn-soft:#FBF0D9;
+  --new:#9A3412; --new-soft:#FDEBDD;
+  --display:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#141A1C; --surface:#1B2326; --ink:#E6ECEA; --muted:#9AA7AA; --line:#2C3739;
+    --accent:#5CC4AC; --accent-soft:#17312C;
+    --ok:#6FD19A; --ok-soft:#173226; --old:#D6A9A9; --old-soft:#2E2323; --warn:#E9B95A; --warn-soft:#33290F;
+    --new:#F4A576; --new-soft:#3A2518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#141A1C; --surface:#1B2326; --ink:#E6ECEA; --muted:#9AA7AA; --line:#2C3739;
+  --accent:#5CC4AC; --accent-soft:#17312C;
+  --ok:#6FD19A; --ok-soft:#173226; --old:#D6A9A9; --old-soft:#2E2323; --warn:#E9B95A; --warn-soft:#33290F;
+  --new:#F4A576; --new-soft:#3A2518;
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65;padding:0 16px}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 48px;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;border-bottom:1px solid var(--line);padding-bottom:16px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,30px);line-height:1.3;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 0;font-size:14px}
+.stamp{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);text-align:left;display:flex;flex-direction:column;gap:2px}
+.stamp b{color:var(--ink);font-weight:600;font-size:15px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tab{appearance:none;border:0;background:none;font:inherit;font-weight:500;color:var(--muted);padding:10px 14px;border-bottom:3px solid transparent;margin-bottom:-1px;cursor:pointer;display:flex;gap:8px;align-items:center}
+.tab[aria-selected="true"]{color:var(--ink);border-color:var(--accent)}
+.tab:focus-visible,.chip:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.count{font-variant-numeric:tabular-nums;font-size:12px;background:var(--line);color:var(--ink);border-radius:999px;padding:0 8px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{appearance:none;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+#q{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 12px;min-width:0;width:240px;max-width:100%}
+.share{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--accent-soft);border-radius:10px;padding:10px 14px;font-size:14px}
+.share code{font-family:var(--body);direction:ltr;unicode-bidi:embed;word-break:break-all;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:12.5px;user-select:all}
+.btn{appearance:none;font:inherit;font-size:13px;font-weight:500;border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:8px;padding:4px 12px;cursor:pointer}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th,td{text-align:right;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}
+th{font-size:12.5px;font-weight:600;color:var(--muted);letter-spacing:.02em;background:var(--surface);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td.t{min-width:230px;font-weight:600}
+td.s{min-width:280px;color:var(--ink);white-space:pre-line}
+td.d{font-variant-numeric:tabular-nums;font-size:13.5px;min-width:130px}
+td.i{font-size:13.5px;color:var(--muted);min-width:150px}
+td.l{min-width:110px;font-size:13.5px}
+td.r{min-width:200px;font-size:13.5px}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:0 8px;margin-inline-start:6px;vertical-align:middle}
+.pill.new{background:var(--new-soft);color:var(--new)}
+.topic{display:block;font-size:12px;font-weight:500;color:var(--accent);margin-bottom:2px}
+.nolink{color:var(--warn);font-size:12.5px}
+a{color:var(--accent)}
+details{margin-top:6px;font-size:12.5px;color:var(--muted);font-weight:400}
+details summary{cursor:pointer;color:var(--accent)}
+details p{margin:4px 0 0;white-space:pre-line}
+.r-old{color:var(--old)} .r-warn{color:var(--warn)}
+.legend{font-size:13px;color:var(--muted);margin:0}
+.empty,.status{padding:28px;text-align:center;color:var(--muted)}
+footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;display:flex;flex-wrap:wrap;gap:6px 18px}
+@media (max-width:600px){ .stamp{text-align:right} #q{width:100%} }
+</style>
+
+<div class="wrap" dir="rtl" lang="ar">
+  <header>
+    <div>
+      <h1>مكتبة القرارات العقارية</h1>
+      <p class="sub">رصد آلي للقرارات والأنظمة العقارية من أم القرى والهيئة العامة للعقار ووزارة البلديات والإسكان</p>
+    </div>
+    <div class="stamp"><span>آخر تحديث</span><b id="updated">—</b><span id="runnote"></span></div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="حالة القرار">
+    <button class="tab" role="tab" id="tab-active" data-tab="active" aria-selected="true">فعّالة <span class="count" id="c-active">0</span></button>
+    <button class="tab" role="tab" id="tab-superseded" data-tab="superseded" aria-selected="false">سابقة / ملغاة <span class="count" id="c-superseded">0</span></button>
+    <button class="tab" role="tab" id="tab-uncertain" data-tab="uncertain" aria-selected="false">غير مؤكدة <span class="count" id="c-uncertain">0</span></button>
+  </nav>
+
+  <p class="legend" id="legend"></p>
+
+  <div class="share" id="share">
+    <span>الرابط الدائم لكل القرارات الفعّالة:</span>
+    <code id="permalink">—</code>
+    <button class="btn" id="copy" type="button">نسخ الرابط</button>
+    <span id="copied" class="legend" hidden>تم النسخ</span>
+  </div>
+
+  <div class="tools">
+    <div class="chips" id="chips" role="group" aria-label="الموضوع"></div>
+    <input id="q" type="search" placeholder="ابحث في العنوان أو الجهة أو الملخص" aria-label="بحث">
+  </div>
+
+  <div class="tablebox"><table>
+    <thead id="thead"></thead>
+    <tbody id="tbody"><tr><td class="status" colspan="7">جارٍ تحميل القرارات…</td></tr></tbody>
+  </table></div>
+
+  <footer>
+    <span>كل صف يحمل رابط المصدر الرسمي كما ورد فيه. حين يتعذّر الرابط المباشر يُذكر ذلك صراحة.</span>
+    <span>التصنيف مبني على ما تنص عليه المصادر نفسها، وما لم تحسمه المصادر يوضع في «غير مؤكدة» مع السبب.</span>
+  </footer>
+</div>
+
+<script>
+const TOPICS = {all:"الكل", white_land:"رسوم الأراضي البيضاء", foreign_ownership:"تملك غير السعوديين", rental:"الإيجار", rega_regulation:"أنظمة ولوائح الهيئة", municipal_real_estate:"العقارات البلدية", other:"تنظيمات أخرى"};
+const LEGEND = {
+  active:"قرارات تنص مصادرها على أنها سارية، أو أحدث نسخة منشورة بتاريخ نفاذ رسمي ولم يُرصد تعديل أو إلغاء لاحق.",
+  superseded:"قرارات نصّ مصدر رسمي على إلغائها أو استبدالها، مع سبب وتاريخ الإلغاء.",
+  uncertain:"قرارات لم تحسم المصادر المعتمدة حالتها. سبب الشك مذكور لكل صف، ولا تُنقل إلى «فعّالة» إلا بدليل من المصدر."
+};
+let state = {tab:"active", topic:"all", q:"", rows:[], meta:{}};
+try{ const h = location.hash.replace("#",""); if (LEGEND[h]) state.tab = h; }catch(e){}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function fmtStamp(iso){
+  if(!iso) return "—";
+  try{ return new Intl.DateTimeFormat("ar-SA-u-nu-latn-ca-gregory",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Riyadh"}).format(new Date(iso)) + " (بتوقيت الرياض)"; }
+  catch(e){ return iso; }
+}
+
+function linkCell(r){
+  if(r.url) return `<a href="${esc(r.url)}" target="_blank" rel="noopener">فتح المصدر</a><br><span class="legend">${esc(r.source)}</span>`;
+  return `<span class="nolink">تعذّر الوصول لرابط مباشر</span><br><span class="legend">${esc(r.source)}</span>`;
+}
+function details(r){
+  const parts = [];
+  if(r.evidence) parts.push(`<p><b>دليل الحالة:</b> ${esc(r.evidence)}</p>`);
+  if(r.evidence_url) parts.push(`<p><a href="${esc(r.evidence_url)}" target="_blank" rel="noopener">رابط الدليل</a></p>`);
+  if(r.note) parts.push(`<p><b>ملاحظة:</b> ${esc(r.note)}</p>`);
+  return parts.length ? `<details><summary>التفاصيل</summary>${parts.join("")}</details>` : "";
+}
+
+function render(){
+  const byTab = t => state.rows.filter(r => r.status === t);
+  for (const t of ["active","superseded","uncertain"]) $("c-"+t).textContent = byTab(t).length;
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === state.tab)));
+  $("legend").textContent = LEGEND[state.tab];
+  $("share").hidden = state.tab !== "active";
+
+  const present = new Set(byTab(state.tab).map(r => r.topic));
+  $("chips").innerHTML = Object.entries(TOPICS).filter(([k]) => k==="all" || present.has(k))
+    .map(([k,v]) => `<button class="chip" type="button" data-topic="${k}" aria-pressed="${state.topic===k}">${v}</button>`).join("");
+
+  const extra = state.tab==="superseded" ? "سبب / تاريخ الإلغاء" : state.tab==="uncertain" ? "سبب الشك" : null;
+  $("thead").innerHTML = `<tr><th>العنوان</th><th>الجهة المُصدرة</th><th>${state.tab==="active"?"تاريخ السريان":"التاريخ"}</th><th>الملخص</th><th>رابط المصدر</th>${extra?`<th>${extra}</th>`:""}</tr>`;
+
+  const q = state.q.trim();
+  const lastRun = state.meta.last_run_date;
+  let rows = byTab(state.tab).filter(r => state.topic==="all" || r.topic===state.topic)
+    .filter(r => !q || [r.title,r.issuer,r.summary].join(" ").includes(q));
+  rows.sort((a,b) => String(b.first_seen||"").localeCompare(String(a.first_seen||"")) || String(b.sort_key||"").localeCompare(String(a.sort_key||"")));
+  const cols = extra ? 6 : 5;
+  if(!rows.length){ $("tbody").innerHTML = `<tr><td class="empty" colspan="${cols}">لا توجد قرارات مطابقة.</td></tr>`; return; }
+  $("tbody").innerHTML = rows.map(r => {
+    const isNew = lastRun && r.first_seen === lastRun && r.baseline !== true;
+    const date = state.tab==="active" ? (r.effective || `غير محدد في المصدر — صدر ${r.issued||"—"}`) : (r.issued || "—");
+    const reason = extra ? `<td class="r ${state.tab==="superseded"?"r-old":"r-warn"}">${esc(r.reason)}</td>` : "";
+    return `<tr>
+      <td class="t"><span class="topic">${esc(TOPICS[r.topic]||"")}</span>${esc(r.title)}${isNew?'<span class="pill new">جديد</span>':""}${details(r)}</td>
+      <td class="i">${esc(r.issuer)}</td>
+      <td class="d">${esc(date)}</td>
+      <td class="s">${esc(r.summary)}</td>
+      <td class="l">${linkCell(r)}</td>${reason}</tr>`;
+  }).join("");
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest(".tab"); if(t){ state.tab = t.dataset.tab; state.topic="all"; try{history.replaceState(null,"","#"+state.tab)}catch(_){} render(); return; }
+  const c = e.target.closest(".chip"); if(c){ state.topic = c.dataset.topic; render(); return; }
+});
+$("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+$("copy").addEventListener("click", async () => {
+  const text = $("permalink").textContent;
+  try{ await navigator.clipboard.writeText(text); $("copied").hidden=false; setTimeout(()=>$("copied").hidden=true,1800); }
+  catch(e){ const r=document.createRange(); r.selectNodeContents($("permalink")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+});
+
+(async () => {
+  for (let i = 0; i < 30 && !window.claude?.use; i++) await new Promise(r => setTimeout(r, 100));
+  const db = window.claude?.use ? await window.claude.use("db") : null;
+  if(!db){ $("tbody").innerHTML = `<tr><td class="status" colspan="6">تعذّر تحميل بيانات المكتبة في هذا العرض. افتح الصفحة من claude.ai وأنت مسجّل الدخول بحساب المؤسسة.</td></tr>`; return; }
+  db.doc("meta/run").onSnapshot(s => {
+    state.meta = s.exists ? s.data() : {};
+    $("updated").textContent = fmtStamp(state.meta.last_updated);
+    $("runnote").textContent = state.meta.last_run_summary || "";
+    $("permalink").textContent = state.meta.library_url ? state.meta.library_url + "#active" : "—";
+    render();
+  }, () => {});
+  db.collection("decisions").onSnapshot(s => { state.rows = s.docs.map(d => ({id:d.id, ...d.data()})); render(); },
+    () => { $("tbody").innerHTML = `<tr><td class="status" colspan="6">انقطع الاتصال ببيانات المكتبة. أعد تحميل الصفحة.</td></tr>`; });
+})();
+</script>
