@@ -1,1 +1,18 @@
-{"name":"furas-opportunity-scout","version":"1.15.0","description":"Scans Saudi Arabia's Furas (فرص) municipal investment portal for long-term investment opportunities in Riyadh, Jeddah, Mecca and Medina, verifies the data, and publishes an Arabic dashboard with real MOT road context. Deep-dives a named opportunity by reading its كراسة, and plots opportunities as labelled pins on Google Maps.","author":{"name":"Koushan"},"keywords":["furas","momrah","saudi","investment","opportunities","arabic","gis"],"license":"UNLICENSED"}
+{
+  "name": "furas-opportunity-scout",
+  "version": "1.16.0",
+  "description": "Scans Saudi Arabia's Furas (فرص) municipal investment portal for long-term investment opportunities in Riyadh, Jeddah, Mecca and Medina, verifies the data, and publishes an Arabic dashboard with real MOT road context. Deep-dives a named opportunity by reading its كراسة, and plots opportunities as labelled pins on Google Maps.",
+  "author": {
+    "name": "Koushan"
+  },
+  "keywords": [
+    "furas",
+    "momrah",
+    "saudi",
+    "investment",
+    "opportunities",
+    "arabic",
+    "gis"
+  ],
+  "license": "UNLICENSED"
+}
