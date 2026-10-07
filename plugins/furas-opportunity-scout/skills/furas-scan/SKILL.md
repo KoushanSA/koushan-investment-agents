@@ -29,12 +29,28 @@ verification gate. It exits non-zero and prints a diagnosis if anything fails.
   this environment never dials it. Requesting two hosts when one suffices makes the ask harder
   to approve for no benefit.
 
+There is **no count floor or ceiling** — the total is whatever the portal has open and is
+reported as found. Only accuracy gates stop a run.
+
+Apply the amanah scope (a city also counts what its own amanah or city sectors offer, even when
+the portal writes another town or leaves the city blank; separate town municipalities stay out):
+
+```bash
+python3 furas_amanah_scope.py --data "$RUN/data.json"
+```
+
+Exit 0 — proceed. Exit 2 — an accuracy gate failed on the combined set: stop, do not publish.
+
 Then build:
 
 ```bash
 python3 furas_roads.py     --data "$RUN/data.json"
 python3 furas_dashboard.py --data "$RUN/data.json" --out "$RUN/dashboard.html"
+python3 furas_amanah_scope.py --data "$RUN/data.json" --html "$RUN/dashboard.html"
 ```
+
+The last line rewrites the dashboard's city-methodology line to state the amanah rule and how
+many records it added this run.
 
 **Run `furas_roads.py` before the dashboard.** It bakes the real main-road network into
 `data.json` as a per-city frame plus a road image. It is the only source of roads available:
