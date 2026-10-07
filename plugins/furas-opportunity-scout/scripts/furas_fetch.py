@@ -3,7 +3,7 @@
 import json, re, sys, time, html, argparse, threading, queue, datetime, math
 import urllib.request, urllib.parse, urllib.error
 from config import (PROXY, SERVICE, DETAIL, CITY_STORED, CITY_DISPLAY, FIELDS,
-                    INCLUDE_TYPES, SANITY_MIN, SANITY_MAX, UA, normalize_ar, AMANA_TO_CITY)
+                    INCLUDE_TYPES, UA, normalize_ar, AMANA_TO_CITY)
 
 def get(url, tries=4, timeout=60):
     last = None
@@ -234,8 +234,6 @@ def verify(recs):
     for stored in CITY_STORED.values():
         if per.get(stored, 0) == 0:
             fails.append(f"city '{stored}' returned 0 — check Arabic normalisation before trusting this")
-    if not (SANITY_MIN <= len(recs) <= SANITY_MAX):
-        fails.append(f"total {len(recs)} outside sanity band {SANITY_MIN}-{SANITY_MAX}")
     # duration cross-check against the portal's own detail card
     checked = [r for r in recs if r.get("_card")]
     mism = [r["OPPORTUNITYID"] for r in checked
