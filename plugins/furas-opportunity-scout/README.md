@@ -73,9 +73,17 @@ public disclosure platform and is read anonymously.
 ## Verification gates
 
 The scan refuses to publish unless every record has a reference number, there are no
-duplicates, no excluded types leaked through, every city returned a non-zero count, the total
-sits in a sane band, and `DURATION` still agrees with the portal's own detail card. A failing
-gate prints which one and exits non-zero.
+duplicates, no excluded types leaked through, every city returned a non-zero count, dates are
+ISO, coordinates are present, and `DURATION` still agrees with the portal's own detail card. A
+failing gate prints which one and exits non-zero. There is **no count floor**: the total is
+reported as found (decided 5 Oct 2026, after ordinary turnover dropped it to 109).
+
+## City scope
+
+A city counts every record the portal labels with that city, **plus** every record its main
+amanah offers itself or through one of its city sectors (e.g. أمانة محافظة جدة's ثول listings),
+even when the portal writes another town or leaves the city blank. Records from separate town
+municipalities (الخرج، رابغ، الجموم …) stay out. `scripts/furas_amanah_scope.py` applies this.
 
 ## Booklet formats differ by amanah — the skill is written for that
 
