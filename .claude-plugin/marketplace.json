@@ -11,7 +11,7 @@
       "name": "furas-opportunity-scout",
       "source": "./plugins/furas-opportunity-scout",
       "description": "Scans the Furas (فرص) municipal investment portal for long-term opportunities in Riyadh, Jeddah, Mecca and Medina and publishes an Arabic dashboard; deep-dives an opportunity's كراسة and plots opportunities on Google Maps.",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "category": "investment"
     },
     {
